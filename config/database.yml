@@ -1,0 +1,25 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ecsdemo_db_dev
+  pool: 5
+  username: ecsdemo
+  password: secure
+  host: localhost
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: ecsdemo_db_test
+  pool: 5
+  username: ecsdemo
+  password: secure
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: ecsdemo_db_prod
+  pool: 5
+  username: ecsdemo
+  password: secure
+  host: localhost
