@@ -1,9 +1,12 @@
 ActiveAdmin.register Contract do
+  actions :all, :except => [:destroy]
+  #index :download_links => [:csv]
 
   filter :account, :as => :string
   filter :customer, :as => :string
   filter :title, :as => :string
-  
+  filter :current_end_date
+
 scope :all, :default => true
   scope :Active do |contracts|
     contracts.where(:status => "A")
@@ -21,7 +24,7 @@ scope :all, :default => true
     column("CURRENT END DATE", :sortable => :current_end_date) {|contract| contract.current_end_date.strftime("%d-%b-%Y") }
     column("FUNDED AMOUNT", :sortable => :funded_amount) {|contract| number_to_currency contract.funded_amount }
     column("REVENUE TO DATE", :sortable => :revenue_to_date) {|contract| number_to_currency contract.revenue_to_date }
-    column("FUNDS REMAINING") {|contract| number_to_currency contract.funded_amount - contract.revenue_to_date }
+    column("FUNDS REMAINING", :sortable =>:funds_remaining) {|contract| number_to_currency contract.funds_remaining }
     actions
   end
 

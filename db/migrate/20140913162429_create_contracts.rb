@@ -5,7 +5,7 @@ class CreateContracts < ActiveRecord::Migration
       t.string :customer
       t.string :title
       t.string :contract_no
-      t.string :status, :defult => 'A'
+      t.string :status, :default => 'A'
       t.date :start_date
       t.date :current_end_date
       t.date :end_date_w_options
