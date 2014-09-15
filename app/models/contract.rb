@@ -10,7 +10,9 @@ class Contract < ActiveRecord::Base
 
 private
 def date_range_checker
-	 if current_end_date < start_date || current_end_date > end_date_w_options
+	 if !current_end_date.nil? && !start_date.nil? && 
+	 	!end_date_w_options.nil? &&
+	 	(current_end_date < start_date || current_end_date > end_date_w_options)
 		errors.add(:current_end_date, "Should be between start_date and end_date_w_options")
 	end
 end
