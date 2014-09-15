@@ -17,7 +17,7 @@ ActiveAdmin.register_page "Dashboard" do
          panel "Recently Updated Contracts" do
              table_for Contract.limit(2).order('updated_at desc').map do 
                column ("Contract") {|contract| link_to(contract.title, admin_contract_path(contract)) }
-               column ("Updated at") {|contract| contract.updated_at.strftime("%d-%b-%Y %I:%M:%S %p")}
+               column ("Updated at") {|contract| contract.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%d-%b-%Y %I:%M:%S %p")}
              end
          end
        end
